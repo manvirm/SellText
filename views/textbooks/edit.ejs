@@ -1,0 +1,94 @@
+<% include ../partials/header %>
+
+<div class="container">
+        <div class="row">
+        
+<h2 style="text-align: center; font-family: 'Lato', sans-serif;">Edit Post</h2>
+
+  <div class="col-md-4">
+        </div>
+          <div class="col-md-8">
+
+   <form action="/UVIC/<%= Textbook._id %>?_method=PUT" method="POST" id="editPostForm" enctype="multipart/form-data">
+       
+       
+         <div class="form-group col-md-12 col-lg-6 col-sm-12 ">
+                <label style="display: inline-block;"for="title">Course:</label>
+                <input style="display: block" class="form-control" type="text" value="<%= Textbook.course %>" name="Textbook[course]" required>
+        </div>
+                
+                <div class="col-lg-7">
+                    </div>
+            
+        <div class="form-group col-md-12 col-lg-6 col-sm-12 ">
+                <label style="display: inline-block;"for="title">Title:</label>
+                <input style="display: block" class="form-control" type="text" value="<%= Textbook.title %>" name="Textbook[title]" required>
+        </div>
+                
+                <div class="col-lg-7">
+                    </div>
+                
+         
+                 <div class="form-group col-md-12 col-lg-6 col-sm-12 ">
+                         <label for="price">Price (<i  class="fas fa-dollar-sign"></i>):</label>
+                <input class="form-control" type="number" value="<%= Textbook.price %>" name="Textbook[price]" max="5000">
+                </div>
+           
+               
+         <div class="form-group col-md-12 col-lg-12 col-sm-12 ">
+        
+        <input id="file" type="file" accept="image/*" name="images" multiple> (max. 6)
+        
+                <div>
+                        <p style="margin-top:7px; margin-bottom: 0px; color: red;">*check pictures you would like to remove*</p>
+                        
+                        <% var count = 0; %>
+                     
+                    
+                        <% Textbook.images.forEach(function(image, i) { %>
+                        
+                        <img  class="img-fluid" style=" margin-top: 3px;height:100px; width: 100px;" 
+                        src ="<%= image.url %>" alt="Sell Text edit image">
+                        
+                                
+                                        
+                            
+                           <input type="checkbox" name="deleteImages[]" class="imageDeleteCheckbox" id="image<%= i %>" value="<%= image.public_id %>">
+                                
+                                 
+                                <% count++ %>
+                                
+                             
+                        
+                        <% }) %>
+                
+                </div>
+        
+        </div>
+        
+           
+                <div class="col-lg-7">
+                    </div>
+                    
+          <div class="form-group col-md-12 col-lg-6 col-sm-12 ">
+                <textarea id="info" rows="5"   class="form-control"   name="Textbook[description]" maxlength="5000"><%= Textbook.description %></textarea>
+        </div>
+        
+                           
+                <div class="col-lg-7">
+                    </div>
+                        
+          <div class="form-group col-md-12 col-lg-6 col-sm-12 " style="margin-left: 3px;">
+               <a href="/UVIC/<%= Textbook._id %>" style="color: black;"> CANCEL</a>
+                <button style="color: white; margin-left: 20px;" class="btn btn-med save">SAVE</button>
+        </div>
+                
+                
+   </form>
+
+                </div>
+
+        </div>
+</div>
+<script src="/javascripts/post/post-edit.js"></script>
+<% include ../partials/footer %>

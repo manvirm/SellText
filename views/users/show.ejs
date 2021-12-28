@@ -1,0 +1,266 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        
+         <% if(user.avatar[0] == null){ %>
+        
+        <div style="text-align: center;">
+            <img style="border-radius: 50%;" src="https://res.cloudinary.com/manvirm/image/upload/v1553738329/sell-text-profile/default-profile.jpg">
+        </div>
+        <% } %>
+        
+        
+         <% if(user.avatar[0]){ %>
+        <div style="text-align: center;" >
+        <img 
+        src="<%= user.avatar[user.avatar.length - 1].url %>"/>
+        </div>
+        
+        <% } %>
+        
+        <h3 style="text-align: center;"><i style="font-size: 20px;" class="fas fa-at"></i><strong><%= user.username %></strong></h1>
+
+            <% if(currentUser){ %>
+             
+             <% if(currentUser.id === user.id || currentUser && currentUser.isAdmin){ %>
+             <div style="text-align: center;">
+              <a  href="#" class="toggle-image-form" >Edit Profile Picture</a>
+            
+             
+                  <form style="text-align: center; margin-top: 10px;" action="/users/<%= currentUser._id %>?_method=PUT"  
+                  id="image-post-form" method="POST" class="image-post-form" enctype="multipart/form-data">
+                      
+                    <div  class="form-group" >
+                         <input style="margin: 0 auto" id="file" type="file" accept="image/*" name="avatar">
+                    </div>
+          
+                        
+                 <div class="form-group">
+                          <button style="background-color: rgba(255, 255, 255, .4);" class="cancel-image-form btn btn-sm" onclick="return false;" >CANCEL</button>
+                          <button style="color: white;" class="btn btn-sm save">SAVE</button>
+                    </div>        
+                
+                </form>
+                
+                
+                
+                </div>
+            
+             <% } %>
+        
+        <% } %>
+            
+    </div>
+    
+</div>
+
+<div class="container">
+    
+    
+     <div style="margin-top: 10px; border-bottom:2px solid #F0ECEC;"></div>
+     
+     
+     <h2 style="text-transform: capitalize;"><%= user.firstName %> <%=user.lastName%></h2>
+
+ 
+     <% if(user.school){ %>
+
+    <div><p style="color:gray; display: inline;">Studies at: </p><strong><%= user.school %></strong>
+    
+    <% if(currentUser){ %>
+             
+             <% if(currentUser.id === user.id || currentUser && currentUser.isAdmin){ %>
+    <button style="margin-left: 4px; background-color: rgba(255, 255, 255, .4);" class="toggle-school-form btn btn-xs btn-secondary"> 
+                                <i style="font-size: 15px;"class="fas fa-edit"></i>
+                                </button>  
+                                
+                            <form action="/users/<%= currentUser._id %>?_method=PUT" method="POST" class="school-post-form" id="school-post-form">
+                
+                <input class="form-control input-sm" type="text" name="school" placeholder="school name" id="school" value="<%= user.school %>"  style="width: 200px; display: inline;" 
+                maxlength="80">
+                <button style=" color: white;" class="btn btn-sm save">Save</button>
+                
+            </form>
+                                
+                          </div>      
+                     <% } %>
+         <% }else{ %>
+            </div>  
+          <% } %>
+         
+                                
+    <% }else{ %>
+    
+     <% if(currentUser){ %>
+             
+             <% if(currentUser.id === user.id || currentUser && currentUser.isAdmin){ %>
+    
+         <div><p style="color:gray">Studies at: </p>
+         
+         <% if(currentUser){ %>
+             
+             <% if(currentUser.id === user.id || currentUser && currentUser.isAdmin){ %>
+            
+            <form action="/users/<%= currentUser._id %>?_method=PUT" method="POST" style="display: inline;" >
+                
+                <input class="form-control input-sm" type="text" name="school" placeholder="Add School" id="school"  style="width: 200px; display: inline;" maxlength="40">
+                <button style=" color: white;" class="btn btn-sm save">Save</button>
+                
+            </form>
+            
+        </div>
+        
+        <% } %>
+         <% } %>
+        
+        <% } %>
+         <% } %>
+          <% } %>
+            
+
+<% if(currentUser){ %>
+
+   <% if(currentUser.id === user.id){ %>
+
+        <div style="border-bottom:2px solid #F0ECEC; margin-top: 10px;"></div>
+        
+        <h3>Private Information</h3>
+
+        <div style="color:gray">Email:</div> <div style="margin-top:5px;"><a><%= user.email %></a>
+        
+              
+    <button style="margin-left: 4px; background-color: rgba(255, 255, 255, .4);" class="toggle-email-form btn btn-xs btn-secondary"> 
+                                <i style="font-size: 15px; "class="fas fa-edit"></i>
+                                </button>  
+                                
+                            <form action="/users/<%= currentUser._id %>?_method=PUT" method="POST" class="email-post-form" id="email-post-form">
+                <input class="form-control input-sm" type="email" name="email" value="<%= user.email %>" style="width: 200px; display: inline;" >
+                 <button style="color: white;" class="btn btn-sm save">Save</button>
+            </form>
+        
+        </div>
+        
+        <div style="margin-top: 10px; margin-bottom:10px; border-bottom:1px solid #F9F1F1;"></div>
+
+        <a href="/forgot"><button style="color:white;" class="btn btn-sm reset">Reset Password</button></a>
+        
+        <div style="margin-top: 10px;border-bottom:2px solid #F0ECEC;"></div>
+        <% } %>
+    <% } %>
+    
+    
+        
+
+         
+         <% if(currentUser){ %>
+
+   <% if(currentUser.id !== user.id){ %>
+         
+          <div style="border-bottom:2px solid #F0ECEC; margin-top: 10px;"></div>
+          
+          <% } %>
+    <% }else{ %>
+                 <div style="border-bottom:2px solid #F0ECEC; margin-top: 10px;"></div>
+                 <% } %>
+     
+    <h3>Posts</h3>
+    
+    <% if(textbooks.length>0){ %>
+    
+    <ul>
+          <% var i = 0 ; %>
+        <% textbooks.forEach(function(Textbook){ %>
+               <% var countNewComments=0 %> 
+            <li><a href="/UVIC/<%= Textbook._id%>" ><%= Textbook.title %> </a>
+            <% if(currentUser){ %>
+             <% if(currentUser.id === user.id){ %>
+            <% Textbook.comments.forEach(function(comment){ %>
+                    <% if(comment.author.username !== user.username){ %> 
+                    
+                        <% var commentDay = moment(comment.createdAt).format('YYYY-MM-DD'); %>
+                        <% var nowDay =  moment().format('YYYY-MM-DD'); %>
+             
+                        
+                       <% if(nowDay == commentDay){ %>
+                                <% countNewComments++ %>
+                       <% } %>
+                     <% } %>
+                       
+            <% }) %>
+              <% if(countNewComments > 0 && countNewComments <10){ %>
+                            <span class="circle">
+                                <span style="margin-left:6px; color:white;"><%= countNewComments %></span></span>
+                      <% } %>
+                      
+                      <% if(countNewComments >=10){ %>
+                            
+                            <span style="  height: 20px; width: 21px;background-color: red; border-radius: 50%; display: inline-block;">
+                                <span style="margin-left:3px; color:white;"><%= countNewComments %></span></span>
+                      
+                      <% } %>
+                     <% } %>
+                    <% } %>
+                      <div style="margin-top:8px;"></div>
+            </li>
+        <% i++; %>
+        <% }) %>
+    
+    
+    </ul>
+        
+        <% }else{ %>
+        
+        <div style="margin-left: 20px;">
+            <p style="font-size: 17px;">No posts yet <i style="font-size: 13px; margin-left: 3px;" class="em em-slightly_frowning_face"></i></p>
+        </div>
+            <% } %>
+    
+    
+
+<script src="/javascripts/user/imageForm.js"></script>
+<script src="/javascripts/user/schoolForm.js"></script>
+<script src="/javascripts/user/emailForm.js"></script>
+
+
+
+</div>
+</div>
+<!-- Bottom Footer -->
+<div class="container footer profilePage">
+    <div style="margin-top: 15px; text-align:center;">
+  <a class="bottom" href="/privacy">Privacy Policy</a> | <a class="bottom"  href="/terms">Terms and Conditions</a> | <a class="bottom"  href="/contact">Contact Us</a>
+
+  <h6 style="color: gray;" >SellText <i class="far fa-copyright"></i> 2022
+  </h6>
+  
+   <div style="text-align:center; tooltip">
+   <a style="margin-right:10px;" href="http://instagram.com/_u/selltext_/"><i style="font-size:20px;" class="fab fa-instagram"></i></a>
+   <a style="margin-right:10px;" href="https://twitter.com/SellText"><i style="font-size:20px;" class="fab fa-twitter"></i></a>
+      <a href="mailto:admin@selltext.org"><i style="font-size:20px;" class="fas fa-envelope"></i></a>
+      </div>
+      
+      
+      </div>
+</div>
+
+
+<!-- Navbar -->
+<script src="/javascripts/navbar/navbarActive.js"></script>
+<script src="/javascripts/navbar/buttonActive.js"></script>
+
+ <!-- jQuery CDN -->
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+</script>
+
+
+
+    </body>
+</html>

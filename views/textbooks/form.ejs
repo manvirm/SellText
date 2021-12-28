@@ -1,0 +1,56 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+            <h2 style="text-align: center; font-family: 'Lato', sans-serif;">Create New Post</h2>
+       <div class="col-md-4">
+        </div>
+          <div class="col-md-8">
+              
+               <form style="margin-top:20px;" action="/UVIC" method="POST" id="PostForm" enctype="multipart/form-data">
+                <div class="form-group col-md-12 col-lg-6 col-sm-12 ">
+                    <label style="display: inline-block; "for="title">Course:</label>
+                    <input style="display: block" class="form-control" type="text" name="Textbook[course]" placeholder="course *" id="course" required>
+                </div>
+                
+                    <div class="col-lg-7">
+                    </div>
+          
+
+                <div class="form-group col-md-12 col-lg-6 col-sm-12 ">
+                    <label style="display: inline-block;"for="title">Title:</label>
+                    <input style="display: block" class="form-control" type="text" name="Textbook[title]" placeholder="title *" id="title" required>
+                </div>
+                
+                    <div class="col-lg-7">
+                    </div>
+             
+                     
+                     <div  class="form-group col-md-12 col-lg-6 col-sm-12 ">
+                      <label for="price">Price (<i  class="fas fa-dollar-sign"></i>):</label>
+                    <input  class="form-control" type="number" name="Textbook[price]" placeholder="price (i.e 50)" max="5000" id="price">
+                    </div>
+                    
+              
+                
+                <div class="form-group col-md-12 col-lg-12 col-sm-12">
+                   <input id="file" type="file" accept="image/*" name="images" multiple> (max. 6)
+                </div>
+                
+                <div class="form-group col-md-12 col-lg-6 col-sm-6">
+                    <textarea rows="5"  class="form-control" type="text" name="Textbook[description]" placeholder="description" maxlength="5000"></textarea>
+                </div>
+                
+                    <div class="col-lg-7"></div>
+                
+                <div class="form-group col-md-12 col-lg-6 col-sm-12 ">
+                     <a href="/UVIC" style="color: black;"> CANCEL</a>
+                <button style="color: white; margin-left: 20px;" class="btn btn-med save">Submit</button>
+                </div>
+                
+            </form>
+
+            </div>
+     </div>
+    </div>
+<script src="/javascripts/post/post.js"></script> 
+<% include ../partials/footer %>

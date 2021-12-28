@@ -1,0 +1,328 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        
+        
+        
+         <% if(currentUser && Textbook.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+   
+              <div class="dropdown pull-left" style="margin-top: 5px; margin-left: 5px;">
+          <button class="dropbtn"><i class="fas fa-ellipsis-v"></i></button>
+          <div class="dropdown-content">
+            <a href="/UVIC/<%= Textbook._id %>/edit" data-type="post"><i style="font-size: 16px;"class="fas fa-edit"></i> Edit Post</a>
+            <form action="/UVIC/<%=Textbook._id %>/?_method=DELETE" method="POST">
+                <button onclick="return ConfirmDeletePost()" id="deleteButton"><i style="font-size: 16px; color:gray;" class="fas fa-trash-alt"></i> Delete Post</button>
+                    </form>
+          </div>
+        </div>
+
+<% } %>
+   
+            <div class="thumbnail">
+                 <h1 style="text-align: center;"><strong><%=Textbook.title%></strong></h1>
+                 <h3><%=Textbook.course%></h3>
+                 
+                 <% if(Textbook.price){ %>
+                 <h3 >Price: <i class="fas fa-dollar-sign" style="margin-right: 2px;"></i><%= Textbook.price %></h3>
+                 <% } %>
+                    
+
+                <% if(Textbook.images.length >1){ %>
+                            
+                            <% if(Textbook.images[0]) { %>
+                            
+                            <div style="text-align:center; margin-top:30px;">
+                            <p>image <span style="margin-left:3px;" class="numNum"></span></p>
+                            </div>
+                            
+                            <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                
+                            <% Textbook.images.forEach(function(image) { %>
+                            
+                            <div class="swiper-slide"><img class="img-fluid slides" style="max-width:100%; max-height: 500px; height:auto;"  src ="<%= image.url %>" alt="Sell Text image"></div>
+                            
+                            <% }); %>
+                              </div>
+                                 </div>
+
+                        
+                            <button class="btn btn1" id="button" onClick="plusIndex(-1)" id="btn1"><i class="fas fa-chevron-left"></i></button>
+                            <button class="btn pull-right btn2" id="button" style="" id="button" onclick="plusIndex(1)" id="btn2"><i class="fas fa-chevron-right"></i></button>
+  
+   
+                       
+                            <div class="container" style="margin-top: 15px; text-align: center;" >
+                                <div class="thumb">
+                                 <% var count=0 %>
+                            <% Textbook.images.forEach(function(image) { %>
+                               
+                               
+                            <span><img  class="img-fluid allPics minislides" style="margin-top: 3px;height:100px; width: 100px; display: inline;" 
+                            src ="<%= image.url %>" alt="Sell Text image" ></span>
+                          
+                            <% count++ %>
+                  
+                            
+                            <% }); %>
+                            </div>
+                        </div>
+                            
+                            
+                            
+                            <% } %>
+                        <% } %>
+                        
+                        <% if(Textbook.images.length == 1){ %>
+                            <div style="margin-top: 30px;"></div>
+                                   <% Textbook.images.forEach(function(image) { %>
+                            
+                            <img class="img-fluid" style="max-width:100%; max-height: 500px; height:auto;"  src ="<%= image.url %>" alt="Sell Text image">
+                            
+                            <% }); %>
+                        
+                        
+                        <% } %>
+                            
+                
+                <div class="caption-full">
+                    
+                  <div style=" margin-top: 50px;margin-bottom: 30px;">
+                    <p style="white-space: pre-wrap;"><%= Textbook.description %></p>
+                    </div>
+                    <p style="text-align: left;"><em>Submitted By: <strong><a href="/users/<%= Textbook.author.id %>"><%= Textbook.author.username%></a>
+                    </strong>, <%= moment(Textbook.createdAt).fromNow() %></em></p>
+    
+                </div>
+            </div>
+            <div class="well" style="background-color: white;"> 
+            
+              <% var countComments = 0; %>
+                         <% Textbook.comments.forEach(function(comment){ %>
+                         <% countComments ++ %>
+                            <% comment.replycomments.forEach(function(replycomment){ %>
+                            <% countComments ++ %>
+                             <% }) %>
+                         <% }) %>
+                        
+                        <% if(countComments == 1){ %>
+                        <span class="pull-left"><%= countComments %> comment <i class="far fa-comment-dots"></i></span>
+                        <% }else{ %>
+                         <span class="pull-left"><%= countComments %> comments <i class="far fa-comment-dots"></i></span>
+                        <% } %>
+                <hr>
+                <div style="text-align: center;">
+
+                        
+                         <form style="margin-top: 40px; display:block;" action="/UVIC/<%= Textbook._id %>/comments" method="POST" id="edit-post-form" class="edit-post-form">
+                                <div class="form-group"> 
+                                    <textarea  id="addComment" rows="1" cols="80"   class="form-control" name="comment[text]" placeholder="Add a public comment..." maxlength="220"></textarea>
+                                 </div>
+        
+              
+                         <div class="form-group pull-right">
+                         
+                          <button style="background-color: #0C92F2; color: white;" class="btn btn-med">COMMENT</button>
+                         </div>
+                         
+                        </form>
+                        
+                      </div>
+         
+             <div style="margin-top: 50px;"></div>
+                <% Textbook.comments.forEach(function(comment){ %>
+                    <div style="margin-top: 12px; padding-top: 7px;" class="row">
+                    
+                            <span style="float: left; margin-right: 10px; ">
+                                <a  href="/users/<%= comment.author.id %>">
+                                 <div class="col-md-12">
+                             <% if(comment.author.avatar[0] == null){ %>
+                        
+                        <div style="display: inline;">
+                            <img style="border-radius: 50%;height: 50px; width:50px;" src="https://res.cloudinary.com/manvirm/image/upload/v1553738329/sell-text-profile/default-profile.jpg">
+                        </div>
+                        <% } %>
+                        
+                        
+                         <% if(comment.author.avatar[0]){ %>
+                        <div style="display:inline;" >
+                        <img style="height: 50px; width:50px;"src="<%= comment.author.avatar[comment.author.avatar.length - 1].url %>"/>
+                        </div>
+                        
+                        <% } %>
+                        </a>
+                        
+
+                        <strong><span style="margin-left:10px;"><a style="color: black; " href="/users/<%= comment.author.id %>">
+                                <%= comment.author.username %></a></strong> <span id="commentTime"  style="margin-left:3px; color:gray;"><%= moment(comment.createdAt).fromNow() %></em>
+                               </span></span>
+                           
+                            <p style="margin-left: 63px;">
+                                <%= comment.text %> 
+                            </p>
+                            
+                            
+                            <div>
+                            <button style="color:#2D7EBC; background-color: white; margin-left: 50px;" class="toggle-reply-form btn btn-med" onclick="showReplyForm()">REPLY</button>
+                        
+                            
+                            
+                    <form style="margin-top: 20px; " action="/UVIC/<%= Textbook._id %>/comments/<%=comment._id %>/replycomments" method="POST" class="edit-reply-form" id="edit-reply-form">
+                                <div class="form-group"> 
+            <textarea  id="addComment" rows="1" cols="80"   class="form-control" name="replycomment[text]" placeholder="Add a public reply..." maxlength="220"></textarea>
+                                     </div>
+        
+              
+                         <div class="form-group pull-right">
+                         <button style="background-color: rgba(255, 255, 255, .4);" class="cancel-reply-form btn btn-sm" onclick="return false;" >CANCEL</button>
+                          <button style="background-color: #0C92F2; color: white;" class="btn btn-sm">REPLY</button>
+                         </div>
+                         
+                        </form>
+                        
+                        </div>
+                           
+                      
+
+                    </div>
+                    
+                    </div>
+                    
+                    
+                    
+                     <% if(currentUser && Textbook.author.id.equals(currentUser._id) || (currentUser && comment.author.id.equals(currentUser._id)) ){ %>
+                     
+                    <form class="pull-right" id="deleteComment" action="/UVIC/<%=Textbook._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                      <span >  
+                      <button  style="background-color: white; color:gray;" class="btn btn-xs" onclick="return ConfirmDeleteComment()">
+                          <i style="font-size: 16px;" class="fas fa-trash-alt"></i>
+                          </button> 
+                          </span>
+                    </form>
+                    
+                    <div style="  margin-top: 30px;"></div>
+                    <% }%>
+                     
+                    
+                              
+                               <% comment.replycomments.forEach(function(replycomment){ %>
+                               <div id="commentReplies">
+                    <div style="margin-top: 12px; padding-top: 7px;" class="row">
+                    
+                            <span style="float: left; margin-right: 10px; ">
+                                <a  href="/users/<%= replycomment.author.id %>">
+                                 <div class="col-md-12">
+                             <% if(replycomment.author.avatar[0] == null){ %>
+                        
+                        <div style="display: inline;">
+                            <img style="border-radius: 50%; height: 35px; width:35px;" src="https://res.cloudinary.com/manvirm/image/upload/v1553738329/sell-text-profile/default-profile.jpg">
+                        </div>
+                        </span>
+                        <% } %>
+                        
+                        
+                         <% if(replycomment.author.avatar[0]){ %>
+                        <div style="display:inline;" >
+                        <img style="height: 35px; width:35px;"src="<%= replycomment.author.avatar[replycomment.author.avatar.length - 1].url %>"/>
+                        </div>
+                        
+                        <% } %>
+                        </a>
+                        
+
+                        <strong><span style="margin-left:10px;"><a style="color: black; " href="/users/<%= replycomment.author.id %>">
+                                <%= replycomment.author.username %></a></strong> <span  id="replycommentTime" style="margin-left:3px; color:gray;">
+                                    <%= moment(replycomment.createdAt).fromNow() %></em></span></span>
+                           
+                            <p style="margin-left: 45px;">
+                                <%= replycomment.text %> 
+                                
+                             
+                            </p>
+                            
+  
+                        </div>
+                    </div>
+                    
+                      <% if(currentUser && replycomment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin 
+                            || currentUser && Textbook.author.id.equals(currentUser._id) ){ %>
+                            
+                     <form id="deleteComment" action="/UVIC/<%=Textbook._id %>/comments/<%= comment._id %>/replycomments/<%= replycomment._id %>?_method=DELETE" method="POST">
+                      <span  class="pull-right">  
+                      <button  style="background-color: white; color:gray;" class="btn btn-xs" onclick="return ConfirmDeleteComment()">
+                          <i style="font-size: 16px;" class="fas fa-trash-alt"></i>
+                          </button> 
+                          </span>
+                    </form>
+                     <% } %>
+                    </div>
+                    <div style="margin-top: 25px;"></div>
+                    <% }) %>
+                    
+                   
+                     <div style=" border-bottom:1px solid #F9F1F1; margin-top: 10px;"></div>
+                   
+                <% }) %>
+              
+            </div>
+        </div>
+    </div>
+    </div>
+    
+<!-- Swiper javascript initialization link -->
+
+ <script src="/swiper.min.js"></script>
+
+<!-- comment -->
+<script src="/javascripts/comment/edit-comment.js"></script>
+<script src="/javascripts/comment/confirmDelete.js"></script>
+
+<!--post -->
+  <% if(Textbook.images.length >1){ %>
+<script src="/javascripts/post/slider.js"></script>
+<% } %>
+<script src="/javascripts/post/confirmDelete.js"></script>
+
+
+
+</div>
+</div>
+<!-- Bottom Footer -->
+<div class="container footer profilePage">
+    <div style="margin-top: 15px; text-align:center;">
+  <a class="bottom" href="/privacy">Privacy Policy</a> | <a class="bottom"  href="/terms">Terms and Conditions</a> | <a class="bottom"  href="/contact">Contact Us</a>
+
+  <h6 style="color: gray;" >SellText <i class="far fa-copyright"></i> 2019
+  </h6>
+  
+   <div style="text-align:center; tooltip">
+   <a style="margin-right:10px;" href="http://instagram.com/_u/selltext_/"><i style="font-size:20px;" class="fab fa-instagram"></i></a>
+   <a style="margin-right:10px;" href="https://twitter.com/SellText"><i style="font-size:20px;" class="fab fa-twitter"></i></a>
+      <a href="mailto:admin@selltext.org"><i style="font-size:20px;" class="fas fa-envelope"></i></a>
+      </div>
+      
+      
+      </div>
+</div>
+
+
+<!-- Navbar -->
+<script src="/javascripts/navbar/navbarActive.js"></script>
+<script src="/javascripts/navbar/buttonActive.js"></script>
+
+ <!-- jQuery CDN -->
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+</script>
+
+
+
+    </body>
+</html>
