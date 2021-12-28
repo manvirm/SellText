@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  
+
+    <title>SellText</title>
+    <link rel="icon" href="https://res.cloudinary.com/manvirm/image/upload/v1552011219/logo7.png">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <link rel="stylesheet" type="text/css" href="/app.css">
+           <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" 
+           integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" 
+           crossorigin="anonymous">
+   <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+      
+<link rel="stylesheet" type="text/css" href="/swiper.min.css">
+<link href="https://fonts.googleapis.com/css?family=Lato|Niramit|Open+Sans|PT+Serif|Quicksand|Roboto" rel="stylesheet">
+<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
+  </head>
+  
+    <div style="margin-top: 11px"></div>
+    <div id="spaceNavbar" class="container">
+
+      <!-- Static navbar -->
+      <nav style="background-color: #3F3737;" class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+              
+                <button type="button"  class="navbar-toggle collapsed changeColor" id="toggle-nav-button"
+                data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" onclick="changeColor()">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            
+            <a id="sHover" style="background-color: #7DDBE5;" class="navbar-brand" href="/"><i style="color: black;" class="fab fa-stripe-s"></i></a>
+          </div>
+          <div  id="navbar" class="collapse navbar-collapse">
+            
+            <ul class="nav navbar-nav">
+              <li><a  href="/">Home</a></li>
+                              <li><a href="/about">About</a></li>
+                              <li><a href="/contact">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              
+                  <% if(!currentUser){ %>
+              
+              <li class="<%= typeof page !== 'undefined' && page === 'login'  %>"><a href="/login">Login</a></li>
+              <li class="<%= typeof page !== 'undefined' && page === 'register'  %>"><a href="/register">Sign Up</a></li>
+               <% } else { %>
+              <li><a href="/users/<%= currentUser.id %>"><strong>View Profile</strong></a></li>
+              <li><a href="/logout">Log Out</a></li>
+               <% } %>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+
+  <body>
+      
+     
+      
+       <div style="text-align: center;">
+            
+            <% if(error && error.length >0){ %>
+            
+                <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+            
+            <% } %>
+            
+             <% if(success && success.length >0){ %>
+            
+                <div class="alert alert-success" role="alert">
+            
+                    <%= success %>
+        
+                </div>
+            
+            <% } %>
+            
+            </div>
