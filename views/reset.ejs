@@ -1,0 +1,84 @@
+<% include ./partials/header %>
+			<form action="/reset/<%= token %>" method="POST">
+			  <legend>Password Reset</legend>
+			  
+	  	<div class="container">
+			<div class="row">
+						
+						
+				 <div class="col-lg-4 col-md-4 col-sm-4">
+					</div>
+	  <div class="col-lg-8 col-md-8 col-sm-8 ">
+						
+						
+			   <div  class="form-group col-md-5 col-lg-5 col-sm-7 ">
+			    <label for="password">New Password</label>
+			    <input type="password" name="password" value="" placeholder="New password" autofocus="autofocus" class="form-control"/>
+			  </div>
+			  
+			  <div class="col-lg-8 col-md-8 col-sm-6">
+                    </div>
+			  
+			  
+			   <div  class="form-group col-md-5 col-lg-5 col-sm-7 ">
+			    <label for="confirm">Confirm Password</label>
+			    <input type="password" name="confirm" value="" placeholder="Confirm password" class="form-control"/>
+			  </div>
+			  
+			  <div class="col-lg-8 col-md-8 col-sm-6">
+                    </div>
+                    
+			  <div class="form-group col-md-5 col-lg-5 col-sm-7 ">
+			    <button class="btn btn-block btn-med" style="background-color: #2D7EBC; color: white;">Update Password</button>
+			  </div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script src="/javascripts/user/matchPasswords.js"></script>
+
+ </div>
+  </div>
+  
+  <script src="/javascripts/user/matchEmails.js"></script>
+  
+<!-- Bottom Footer -->
+
+<div class="container footer forgotPage">
+    <div style="margin-top: 15px; text-align:center;">
+  <a class="bottom" href="/">Privacy Policy</a> | <a class="bottom"  href="/">Terms and Conditions</a> | <a class="bottom"  href="/contact">Contact Us</a>
+
+  <h6 style="color: gray;" >SellText <i class="far fa-copyright"></i> 2019
+  </h6>
+  
+   <div style="text-align:center; tooltip">
+   <a style="margin-right:10px;" href="http://instagram.com/_u/selltext_/"><i style="font-size:20px;" class="fab fa-instagram"></i></a>
+   <a style="margin-right:10px;" href="https://twitter.com/SellText"><i style="font-size:20px;" class="fab fa-twitter"></i></a>
+      <a href="mailto:admin@selltext.org"><i style="font-size:20px;" class="fas fa-envelope"></i></a>
+      </div>
+      
+      
+      </div>
+</div>
+
+
+<!-- Navbar -->
+<script src="/javascripts/navbar/navbarActive.js"></script>
+<script src="/javascripts/navbar/buttonActive.js"></script>
+
+ <!-- jQuery CDN -->
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+</script>
+
+
+
+    </body>
+</html>

@@ -1,0 +1,80 @@
+<% include ./partials/header %>
+
+
+  <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1 class="title"><i  class="fab fa-stripe-s logoHome"></i>ellText</h1>
+        <h4 class="slogan">Buy and Sell your textbooks now!</h4>
+        
+         <hr style="border: 0.5px solid #838282;" />
+                    
+                
+                  <select id="test">
+                    <option value="" selected disabled hidden>Choose your school...</option>
+                    <option value="UVIC">University of Victoria</option>
+                  </select>
+                 
+                 <a id="schoolLink" style="display: inline;"><button type="submit" onclick="getSelectedValue('test')" class="btn btn-xs btn-success">Go!</button></a>
+             
+                
+      </div>
+      
+</div>
+
+
+<script>
+  
+  
+  function getSelectedValue(elementId) {
+                        var elt = document.getElementById(elementId);
+                    
+
+                    
+                        var school = "/" + elt.options[elt.selectedIndex].value;
+                         document.getElementById("schoolLink").setAttribute("href",school);
+                    }
+  
+  
+  
+  
+</script>
+
+<!-- Bottom Footer -->
+
+<div class="container footer" style="margin-top:0px; position:fixed;">
+    <div style="margin-top: 15px; text-align:center;">
+  <a class="bottom" href="/privacy">Privacy Policy</a> | <a class="bottom"  href="/terms">Terms and Conditions</a> | <a class="bottom"  href="/contact">Contact Us</a>
+
+  <h6 style="color: gray;" >SellText <i class="far fa-copyright"></i> 2019
+  </h6>
+  
+   <div style="text-align:center; tooltip">
+   <a style="margin-right:10px;" href="http://instagram.com/_u/selltext_/"><i style="font-size:20px;" class="fab fa-instagram"></i></a>
+   <a style="margin-right:10px;" href="https://twitter.com/SellText"><i style="font-size:20px;" class="fab fa-twitter"></i></a>
+      <a href="mailto:admin@selltext.org"><i style="font-size:20px;" class="fas fa-envelope"></i></a>
+      </div>
+      
+      
+      </div>
+</div>
+
+
+<!-- Navbar -->
+<script src="/javascripts/navbar/navbarActive.js"></script>
+<script src="/javascripts/navbar/buttonActive.js"></script>
+
+ <!-- jQuery CDN -->
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+</script>
+
+
+
+    </body>
+</html>
