@@ -1,0 +1,450 @@
+
+
+.about{
+    font-family: 'Raleway', sans-serif;
+ font-weight: 900;
+ color: #101f1d;
+ font-size: 35px;
+ text-align: center;
+
+}
+
+.title{
+    font-family: 'Raleway', sans-serif;
+ font-weight: 750;
+ color: #101f1d;
+ font-size: 30px;
+
+}
+
+.slogan{
+   font-family: 'Raleway', sans-serif;
+ font-weight: 500;
+ font-size: 27px;
+ margin-top:12px;
+}
+
+
+.edit-reply-form{
+   
+   display:none;
+}
+
+
+.bottom{
+   
+color:gray;    
+   
+   
+}
+
+
+.footer {
+
+bottom:0;
+ width: 100%;
+ background-color: #ECE9E9;
+ color: black;
+ height:95px;
+  margin-top: 95px;
+}
+
+#addComment{
+    border: 1px solid  #0C92F2;
+ border-top: none;
+ border-left: none;
+ border-right: none;
+ box-shadow: none;
+   
+}
+
+/* BUTTON HOVERS */
+
+/* cancel password hover in forgot route */
+
+.cancelpass:hover {
+ background: #e7e7e7;
+}
+
+.fa-edit{
+color: #79A7C8
+}
+
+/*edit button hover */
+
+.fa-edit:hover{
+   color: #6395BA;
+}
+
+/* save button hover */
+
+.save{
+ background-color: #0C92F2; 
+}
+
+.save:hover{
+    background-color:#0A74C6;
+}
+
+/*reset password button hover */
+.reset{
+  background-color: #2D7EBC; 
+}
+
+.reset:hover{
+   background-color: #1766A2;
+}
+
+.dot {
+ height: 5px;
+ width: 5px;
+ background-color: #bbb;
+ border-radius: 50%;
+ display: inline-block;
+ margin-bottom:5px;
+}
+
+    
+  
+
+
+/* Edit Navbar anchor colors */  
+
+/* selected link */
+      
+
+           
+    #spaceNavbar .navbar-nav li > a {
+   
+   color:  #DCDADA;
+
+    }
+
+   #spaceNavbar .navbar-nav li > a:hover {
+       
+       color: white;
+   }
+
+
+#spaceNavbar .navbar-nav .active > a {
+   
+   background-color: #3F3737;
+   color: white;
+}           
+
+
+/* flash message contact page */
+.contactFlash{
+   font-size:18px;
+}
+
+.forgotPage{
+   position:fixed;
+}
+
+.profilePage{
+   margin-top:400px;
+}
+
+#commentReplies{
+     margin-left:70px;
+ }
+ 
+ .showPage{
+     margin-top:400px;
+ }
+
+.logoHome{
+   
+margin-right:2px; font-size:58px;
+}  
+
+@media only screen and (max-width: 768px) {
+#button {
+   display: none;
+ }
+ 
+ .contactFlash{
+    font-size:16px;
+ }
+ 
+ .footer {
+bottom:0;
+ width: 100%;
+ background-color: #ECE9E9;
+ color: black;
+ height:95px;
+  margin-top: 120px;
+}
+ 
+ .forgotPage{
+     position:relative;
+     margin-top:270px;
+ }
+ 
+ .profilePage{
+   margin-top:120px;
+}
+
+.showPage{
+     margin-top:500px;
+ }
+
+.logoHome{
+   
+margin-right:2px; font-size:32px;
+}  
+
+.slogan{
+   font-family: 'Raleway', sans-serif;
+ font-weight: 525;
+ font-size: 20px;
+ margin-top:0px;
+}
+
+.title{
+    font-family: 'Raleway', sans-serif;
+ font-weight: 900;
+ color: #101f1d;
+ font-size: 35px;
+
+}
+
+ 
+ #commentReplies{
+     margin-left:45px;
+ }
+ 
+ #commentTime{
+   font-size:14px;
+}
+
+#replycommentTime{
+   font-size:12px;
+   
+}
+ 
+}
+
+
+/* Make navbar collapse button white when opened and back to black when closed */
+
+.changeColor{
+   
+   background-color:#3F3737 !important;
+   
+}
+
+/*give S icon at navbar a hover effect */
+
+#sHover:hover{
+   
+   background-color: #48BDCA !important;
+   cursor: pointer;
+}
+              
+/* Edit Jumbotron */
+
+.jumbotron{
+   text-align: center; 
+   background-color: #7DDBE5;
+   border-style: double;
+   border-width: 1.5px;
+   border-color: black;
+}
+
+
+#delete-book{
+   
+   display: inline;
+   
+}
+
+.fa-dollar-sign {
+   
+   color:#17A140;
+   
+}
+
+.thumbnail{
+padding: 10px 8px 10px;
+   
+}
+
+/*toggle edit profile pic form */
+
+.image-post-form{
+ 
+ display: none;
+ 
+}
+
+
+/*toggle edit school form */
+
+.school-post-form{
+ 
+ display: none;
+ 
+}
+
+/*toggle edit email form */
+
+.email-post-form{
+ 
+ display: none;
+ 
+}
+
+/*toggle post comment form */
+
+.edit-post-form{
+ 
+ display: none;
+ 
+}
+
+
+/* toggle edit comment form */
+
+.edit-comment-form{
+ 
+ display: none;
+ 
+}
+
+
+.delete-icon{
+ 
+ display: none;
+ 
+}
+
+/* number of images text */
+
+.imageNum{
+   
+   display: none;
+   
+}
+
+
+
+/*when small square pics are hovered upon */
+
+.allPics:hover{
+   
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   
+}
+
+/* add image slider */
+
+  .swiper-slide {
+
+text-align: center;
+   }
+
+#button{
+   
+   width: 50px;
+   height: 50px;
+   border-radius: 25px;
+   border-color: #48BDCA;
+   top: 170px;
+   background: #7DDBE5;
+   color: black;
+   font-size: 20px;
+  
+}
+
+#button:hover{
+   
+   background: #48BDCA;
+}
+
+#btn1:hover{
+   
+   box-shadow: 10px 0px 20px 0px black;
+   
+}
+
+#btn2:hover{
+   
+   box-shadow: -10px 0px 20px 0px black;
+   
+}
+
+#btn2{
+   
+ 
+   float: right;
+   
+}
+           
+
+/* edit login page so it will show "or" text in between horizontal line */
+
+.horizontalOr{
+   
+   width: 75%; 
+  text-align: center; 
+  border-bottom: 1px solid #D6DED8; 
+  line-height: 0.1em;
+  margin: auto;
+   
+}
+
+.orText{
+   
+   background:#fff; padding:0 10px;
+   
+   
+}
+
+/* edit post drop down */
+
+.dropbtn {
+
+   background-color:white;
+ font-size: 20px;
+ border: none;
+ color:#67696B;
+}
+
+.dropdown {
+ position: relative;
+ display: inline-block;
+}
+
+.dropdown-content {
+   display: none;
+ position: absolute;
+ background-color: #f9f9f9;
+ min-width: 120px;
+ box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+ z-index: 1;
+}
+
+.dropdown-content a {
+   color: black;
+ padding: 12px 16px;
+ text-decoration: none;
+ display: block;
+}
+.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown-content button:hover {background-color: #f1f1f1}
+.dropdown:hover .dropdown-content {display: block;}
+
+
+#deleteButton{
+   
+   border:none; background-color: #f9f9f9; padding:15px 0px 15px 15px;
+   
+}
+
+
+
+.circle{
+    height: 19px; width: 20px;background-color: red; border-radius: 50%; display: inline-block;
+}
