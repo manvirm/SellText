@@ -4,7 +4,8 @@
   "description": "A web app to buy and sell used textbooks to each other from different colleges and universities.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",

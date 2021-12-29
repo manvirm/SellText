@@ -43,7 +43,7 @@ app.use(sslRedirect());
 //create variable moment that will be used to tell present time for comments and campgrounds posted.
 app.locals.moment = require("moment");
 
-// the second "secret" is just for testing 
+// the second "secret" is just for testing purposes
 const secret = process.env.SECRET || "justatestingsecret";
 
 // PASSPORT CONFIGURATION
@@ -88,13 +88,6 @@ app.use("/camosun", TextbookRoutes);
 
 const port = process.env.PORT || 3000;
 
-app.listen(3000, () => {
-    console.log('server starting');
-})
-
-/*app.listen(process.env.PORT,process.env.IP, function(){
-    
-    console.log("SERVER STARTING..");
-    
-    
-});*/
+app.listen(port, () => {
+    console.log(`Serving on port ${port}`);
+});
