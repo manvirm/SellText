@@ -26,10 +26,12 @@ var RegisterRoutes       = require("./routes/index"),
     replycommentRoutes = require("./routes/replycomments");
 
 var app = express();
-app.set('view engine', 'ejs');
-mongoose.connect('mongodb://localhost:27017/selltext', { useNewUrlParser: true });
 
-//mongoose.set('useCreateIndex', true);
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/selltext';
+app.set('view engine', 'ejs');
+mongoose.connect(dbUrl, { useNewUrlParser: true });
+
+mongoose.set('useCreateIndex', true);
 
 
 //app.use functions
@@ -41,15 +43,15 @@ app.use(sslRedirect());
 //create variable moment that will be used to tell present time for comments and campgrounds posted.
 app.locals.moment = require("moment");
 
-
-
+// the second "secret" is just for testing 
+const secret = process.env.SECRET || "justatestingsecret";
 
 // PASSPORT CONFIGURATION
 
  
     app.use(require("express-session")({
         
-        secret: "Roxy and Bella are the best bics",
+        secret,
         resave: false,
         saveUninitialized: false
                 
@@ -84,9 +86,15 @@ app.use("/UVIC", TextbookRoutes);
 app.use("/camosun/:id/comments", commentRoutes);
 app.use("/camosun", TextbookRoutes);
 
-app.listen(process.env.PORT,process.env.IP, function(){
+const port = process.env.PORT || 3000;
+
+app.listen(3000, () => {
+    console.log('server starting');
+})
+
+/*app.listen(process.env.PORT,process.env.IP, function(){
     
     console.log("SERVER STARTING..");
     
     
-});
+});*/
