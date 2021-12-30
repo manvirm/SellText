@@ -5,4 +5,4 @@ Over the course of 1 year, the average college student spends more than $1,200 o
 
 The problem of overpriced textbooks is not getting any better. As a matter of fact, it is only getting worse! In the past 35 years, textbook costs have skyrocketed 812% and continue to increase as you are reading this very sentence.
 
-This website was created using HTML, CSS, Javascript, Node.js and deployed using heroku and mongo atlas to manage the database. 
+This website was created using HTML, CSS, Javascript, Node.js and deployed using Heroku and Mongo Atlas to manage the database. 
