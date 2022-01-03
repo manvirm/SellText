@@ -54,8 +54,7 @@
             <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4">    
                 
                  <div style="margin-left:3px;">
-                    <!-- date fixed -->
-                    <em class="pull-left" style="color: #DAD7D7; font-size:13px; "><%= moment(Textbook[i].createdAt).format("MMM D") %></em>
+                    <em class="pull-left" style="color: #DAD7D7; font-size:13px; "><%= moment.utc(Textbook[i].createdAt).format("MMM D") %></em>
                     </div>
                 
                 <div class="thumbnail" style="padding: 10px 30px 10px;">    
