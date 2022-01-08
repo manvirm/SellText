@@ -138,7 +138,12 @@ color: #79A7C8
    font-size:18px;
 }
 
+/* footer to stay at bottom for contact and login/forgot password pages */
 .forgotPage{
+   position:fixed;
+}
+
+.contactPage{
    position:fixed;
 }
 
@@ -159,7 +164,7 @@ color: #79A7C8
 margin-right:2px; font-size:58px;
 }  
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1000px) {
 #button {
    display: none;
  }
@@ -179,7 +184,12 @@ bottom:0;
  
  .forgotPage{
      position:relative;
-     margin-top:270px;
+     margin-top:320px;
+     
+ }
+
+ .contactPage{
+   position:relative;
  }
  
  .profilePage{
