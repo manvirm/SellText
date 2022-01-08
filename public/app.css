@@ -147,6 +147,15 @@ color: #79A7C8
    position:fixed;
 }
 
+.profileFooter{
+   position:relative;
+   margin-top:200px;
+}
+
+.profileFooterUser{
+   position:fixed;
+}
+
 .profilePage{
    margin-top:400px;
 }
@@ -191,6 +200,14 @@ bottom:0;
  .contactPage{
    position:relative;
  }
+
+ .profileFooter{
+    position:relative;
+ }
+
+ .profileFooterUser{
+   position:relative;
+}
  
  .profilePage{
    margin-top:120px;

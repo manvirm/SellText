@@ -227,7 +227,11 @@
 </div>
 </div>
 <!-- Bottom Footer -->
-<div class="container footer profilePage">
+<% if(currentUser.id == user.id){ %>   
+    <div class="container footer profileFooter">
+<% }else{ %>
+    <div class="container footer profileFooterUser">
+    <% } %>
     <div style="margin-top: 15px; text-align:center;">
   <a class="bottom" href="/privacy">Privacy Policy</a> | <a class="bottom"  href="/terms">Terms and Conditions</a> | <a class="bottom"  href="/contact">Contact Us</a>
 
