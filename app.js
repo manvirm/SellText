@@ -32,7 +32,7 @@ const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/selltext';
 app.set('view engine', 'ejs');
 mongoose.connect(dbUrl, { useNewUrlParser: true });
 
-mongoose.set('useCreateIndex', true);
+//mongoose.set('useCreateIndex', true);
 
 
 //app.use functions
